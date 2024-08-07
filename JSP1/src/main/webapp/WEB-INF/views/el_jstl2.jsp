@@ -10,6 +10,9 @@
 
 	<h1>회원 가입</h1>
 
+	<!-- form : 양식이 제출될 때 보낼 URL 과 
+	데이터를 전송할 HTTP 메서드를 지정하는것.
+	 -->
   <form action="/el_jstl2" method="POST">
     <table>
       <tr>
