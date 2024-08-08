@@ -40,13 +40,13 @@ public class TestServelt extends HttpServlet {
 		RequestDispatcher dispatcher
 			= req.getRequestDispatcher(path);
 		
+		
 		// 요청 위임 방법 3)
 		// RequestDispatcher 객체에게
 		// HttpServletRequest (요청 데이터)
 		// HttpServletResponse (응답 방법)
 		// 를 주고
 		// JSP로 떠넘기는(위임하는) 메서드 호출
-		
 		dispatcher.forward(req, resp);
 		
 		
