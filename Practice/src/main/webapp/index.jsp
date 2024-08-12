@@ -72,7 +72,9 @@
 
   </pre>
 
+  <!-- 사용자가 폼을 제출할 때 요청이 /search 경로로 전송 -->
   <form action="/search" method="POST">
+  	<!-- 입력된 값이 서버로 전송될 때 이 필드의 값은 inputName이라는 이름으로 서버에 전달 -->
     검색할 이름 입력 : <input type="text" name="inputName">
     <button>검색</button>
   </form>
@@ -86,6 +88,8 @@
   <c:if test="${not empty sessionScope.message}" >
     <c:remove var="message" scope="session" />
   </c:if>
+  
+  
 
   
 </body>
