@@ -61,7 +61,7 @@ public class ELTestServlet2 extends HttpServlet{
 				 "session scope 객체에 세팅한 값");
 		
 		/* session 만료 시키기 */
-		session.setMaxInactiveInterval(1800); // 초단위
+		session.setMaxInactiveInterval(5); // 초단위
 		
 		// 4. application scope
 		// - 서버 전체에 1개만 존재하는 객체
