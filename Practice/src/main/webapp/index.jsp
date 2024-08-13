@@ -73,21 +73,79 @@
   </pre>
 
   <!-- 사용자가 폼을 제출할 때 요청이 /search 경로로 전송 -->
-  <form action="/search" method="POST">
+  <%-- <form action="/search" method="POST">
   	<!-- 입력된 값이 서버로 전송될 때 이 필드의 값은 inputName이라는 이름으로 서버에 전달 -->
     검색할 이름 입력 : <input type="text" name="inputName">
     <button>검색</button>
-  </form>
+  </form> --%>
 
   <%-- 존재하지 않을 경우 결과 출력 --%>
-  <h1>${message}</h1>
+  <%-- <h1>${message}</h1> --%>
 
   <%-- sessionScope에 message가 있을 경우 제거하기 
     -> 1회만 출력
   --%>
-  <c:if test="${not empty sessionScope.message}" >
+  <%-- <c:if test="${not empty sessionScope.message}" >
+    <c:remove var="message" scope="session" />
+  </c:if> --%>
+
+
+
+
+
+
+  <form action="/search" method ="POST">
+    <input type="text" name="inputName">
+    <button>제출하기</button>
+  </form>
+
+
+  <h1>${message}</h1>
+
+  <%-- 현재 웹에 세션으로 만든 메세지가 존재하다면
+    변수명이 무엇인지 확인하고 범위는 어디인지 명시해서 삭제하는 것
+   --%>
+  <c:if test="${not empty sessionScope.message}">
     <c:remove var="message" scope="session" />
   </c:if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
 

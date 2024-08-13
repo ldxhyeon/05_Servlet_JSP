@@ -1,9 +1,11 @@
 package edu.kh.practice.controller;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -90,49 +92,142 @@ public class PracticeServlet extends HttpServlet{
 	
 	
 	
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		
+//		List<String> list = new ArrayList<String>();
+//		
+//		list.add("일동현");
+//		list.add("이동현");
+//		list.add("삼동현");
+//		list.add("사동현");
+//		list.add("오동현");
+//		
+//		// 값 얻어오기
+//		String inputName = req.getParameter("inputName");
+//		
+//		// 입력된 값이 리스트에 있는지 없는지 확인
+//		// 없다면 -1 반환
+//		int index = list.indexOf(inputName);
+//		
+//		
+//		if(index > -1) {
+//			String message = String.format("%s님은 %d번째에 존재합니다.",inputName, index );
+//			
+//			req.setAttribute("message", message);
+//			
+//			String path = "/WEB-INF/views/result.jsp";
+//			
+//			req.getRequestDispatcher(path).forward(req, resp);
+//			
+//		}
+//		
+//		else {
+//			HttpSession session = req.getSession();
+//			 session.setAttribute("message", inputName + "님은 존재하지 않습니다.");
+//			 
+//			 resp.sendRedirect("/");
+//			
+//			
+//		}
+		
+		
+		
+		
+//	}
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<String> list = new ArrayList<String>();
 		
-		list.add("일동현");
+		list.add("짱구");
 		list.add("이동현");
-		list.add("삼동현");
-		list.add("사동현");
-		list.add("오동현");
+		list.add("맹구");
+		list.add("철수");
+		list.add("양양");
 		
-		// 값 얻어오기
-		String inputName = req.getParameter("inputName");
 		
-		// 입력된 값이 리스트에 있는지 없는지 확인
+		// form 제출의 name 값을 얻어온다
+		String name = req.getParameter("inputName");
+		
+		// 리스트에 해당 이름이 있는지 확인
 		// 없다면 -1 반환
-		int index = list.indexOf(inputName);
-		
+		int index = list.indexOf(name);
 		
 		if(index > -1) {
-			String message = String.format("%s님은 %d번째에 존재합니다.",inputName, index );
 			
+			// 리스트에 있다면 해당 이름이 몇번째 인덱스에 있는지
+			// 문자열 반환
+			String message = String.format("%s님은 %d번째 있습니다." , name, index);
+			
+			// 키 값 message를 입력하면 
+			// 이름이 몇번 인덱스에 있는지 출력문 반환 하는 값을
+			// 요청 객체에 할당
 			req.setAttribute("message", message);
 			
+			// 요청 위임할 경로 설정
 			String path = "/WEB-INF/views/result.jsp";
 			
+			// 요청과 응답 셋팅한 값을 해당 경로에 위임
 			req.getRequestDispatcher(path).forward(req, resp);
 			
 		}
 		
 		else {
+			
+			// 해당 요청에 대한 객체 생성
 			HttpSession session = req.getSession();
-			 session.setAttribute("message", inputName + "님은 존재하지 않습니다.");
-			 
-			 resp.sendRedirect("/");
+			
+			// 세션에 키 값, value값 정의
+			session.setAttribute("message", name + "님은 존재하지 않습니다.");
 			
 			
+			// 위 정의한 내용을 어디에 다시 보낼것인지 경로 설정
+			resp.sendRedirect("/");
 		}
 		
 		
 		
 		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
