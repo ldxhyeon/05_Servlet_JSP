@@ -16,7 +16,7 @@ public class MemberDaoImpl implements MemberDao{
 	
 	// 회원 데이터가 저장될 파일 경로를 상수로 지정
 	// 데이터베이스 역할
-	private final String FILE_PATH = "membership_servlet.dat";
+	private final String FILE_PATH = "C:\\io_test/membership_servlet.dat";
 	
 	// 리스트 초기화 null
 	private List<Member> memberList = null;
