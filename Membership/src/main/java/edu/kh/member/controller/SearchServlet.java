@@ -28,6 +28,12 @@ public class SearchServlet extends HttpServlet{
 			MemberService service = new MemberServiceImpl();
 			List<Member> memberList = service.selectName(searchName);
 			
+			req.setAttribute("memberList", memberList);
+			
+			String path = "/WEB-INF/views/selectList.jsp";
+			req.getRequestDispatcher(path).forward(req, resp);
+		
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
