@@ -14,5 +14,13 @@ public interface MemberService {
 
 	List<Member> selectName(String searchName);
 
+	Member getMember(int index);
+
+	boolean updateMember(int index, String phone) throws FileNotFoundException, IOException;
+
+	int updateAmount(int index, int amount) throws FileNotFoundException, IOException;
+
+	boolean deleteMember(int index) throws FileNotFoundException, IOException;
+
 
 }

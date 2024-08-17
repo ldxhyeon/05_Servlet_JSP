@@ -81,6 +81,81 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
+	@Override
+	public Member getMember(int index) {
+		
+		return dao.getMember(index);
+	}
+	
+	
+	@Override
+	public boolean updateMember(int index, String phone) throws FileNotFoundException, IOException {
+		
+		Member target = dao.getMember(index);
+		target.setPhone(phone);
+		
+		dao.saveFile();
+		
+		return true;
+	}
+	
+	
+	
+	@Override
+	public int updateAmount(int index, int amount) throws FileNotFoundException, IOException {
+		
+		Member target = dao.getMember(index);
+		
+		// 이전 금액
+		int before = target.getAmount();
+		
+		// 대상 회원의 금액 누적하기
+		target.setAmount(before + amount);
+		
+		
+		// 등급 판별
+		// 일반   : 0 ~ 100,000 미만
+		// 골드   : 100,000 이상 ~ 1,000,000 미만
+		// 다이아 : 1,000,000 이상
+		
+		int grade = 0;
+		
+		int currentAmount = target.getAmount();
+		if(currentAmount < 100000) grade = Member.Common;
+		else if (currentAmount < 1000000) grade = Member.GOLD;
+		else grade = Member.DIAMOND;
+		
+		int result = 4; // 등급 변경 없으면 4 반환
+		
+		// 이전 회원의 등급과 새로 판별된 등급이 다른 경우
+		if(target.getGrade() != grade) {
+			// 회원의 등급을 판별된 등급으로 변경
+			target.setGrade(grade);
+			result = grade;
+		}
+		
+		
+		dao.saveFile();
+		
+		return result;
+	}
+	
+	
+	@Override
+	public boolean deleteMember(int index) throws FileNotFoundException, IOException {
+		
+			List<Member> memberList = dao.getMemberList();
+			
+			Member target = dao.getMember(index);
+			
+			boolean result = memberList.remove(target);
+			
+			dao.saveFile(); 
+			
+			return result;
+	}
+	
+	
 	
 	
 	

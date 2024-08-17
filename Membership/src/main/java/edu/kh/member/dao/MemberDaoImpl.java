@@ -87,6 +87,14 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	
+	// 회원 조회
+	@Override
+	public Member getMember(int index) {
+		
+		return memberList.get(index);
+	}
+	
+	
 	
 	@Override
 	public void saveFile() throws FileNotFoundException, IOException {
@@ -102,6 +110,9 @@ public class MemberDaoImpl implements MemberDao{
 		}
 
 	}
+	
+	
+	
 	
 	
 	

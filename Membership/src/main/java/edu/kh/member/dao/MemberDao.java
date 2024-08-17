@@ -14,5 +14,7 @@ public interface MemberDao {
 	
 	void saveFile() throws FileNotFoundException, IOException;
 
+	Member getMember(int index);
+
 
 }
